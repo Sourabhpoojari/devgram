@@ -3,7 +3,7 @@ app = express();
 const connectDB = require('./config/db');
 
 // DB connection
-// connectDB();
+connectDB();
 
 // middleware
 app.use(express.json({extended:false}));
