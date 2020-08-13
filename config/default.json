@@ -1,3 +1,4 @@
 {
-    "mongoURI" : "mongodb+srv://sourabh:Pxev6MysfwqLalYs@dev-connector.xww8k.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "mongoURI" : "mongodb+srv://sourabh:Pxev6MysfwqLalYs@dev-connector.xww8k.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret" : "vsjhjhabsd"
 }

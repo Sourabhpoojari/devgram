@@ -1,6 +1,8 @@
-const router = require('express').Router();
+const router = require('express').Router(),
+    auth = require('../middleware/auth'),
+    profileControllers = require('../controllers/profile-controllers');
 
-router.get('/',(req,res)=> res.send('user'));
+router.get('/me',auth,profileControllers.getProfile);
 
 
 
