@@ -29,6 +29,7 @@ router.put('/education',[auth,[
     check('from','from is required').not().isEmpty()
 ]],profileControllers.putEducation);
 router.delete('/education/:edu_id',auth,profileControllers.deleteEducation);
+router.get('/github/:username',profileControllers.getRepos);
 
 
 module.exports = router;

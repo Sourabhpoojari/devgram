@@ -1,5 +1,6 @@
 const Profile = require('../models/profile'),
 config = require('config'),
+request = require('request'),
     User = require('../models/user');
     const {check, validationResult} = require('express-validator');
 
@@ -249,7 +250,7 @@ const deleteEducation = async (req,res,next)=>{
 const getRepos = async (req,res,next)=>{
     try {
         const options = {
-            uri : `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get(githubClientId)}&client_secret=${config.get(githubSecret)}`,
+            uri : `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
             method : `GET`,
             headers : {'user-agent':'node.js'}
         }
@@ -278,3 +279,4 @@ exports.putExperience = putExperience;
 exports.deleteExperience = deleteExperience;
 exports.putEducation = putEducation;
 exports.deleteEducation = deleteEducation;
+exports.getRepos = getRepos;
