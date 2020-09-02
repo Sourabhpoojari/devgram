@@ -5,15 +5,13 @@ const User = require('../models/user'),
     config = require('config');
 const {check, validationResult} = require('express-validator');
 
-
-
 const createUser = async (req,res,next) =>{
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     }
     const {name,email,password} = req.body;
-    let user
+    let user;
     try {
          user= await User.findOne({email});
         if(user){
@@ -43,11 +41,10 @@ const createUser = async (req,res,next) =>{
                 id : user.id
             }
         };
-
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            {expiresIn : 36000000},
+            {expiresIn : 3600},
             (err,token)=>{
                 if(err) throw err;
                  res.status(200).json({token});
@@ -69,10 +66,6 @@ const getUser = async (req,res,next)=>{
         res.status(500).send("cannot get user!");
     }
 };
-
-
-
-
 // logIn - handler
 const logIn = async (req,res,next) =>{
     const errors = validationResult(req);
@@ -97,7 +90,6 @@ const logIn = async (req,res,next) =>{
                 id : user.id
             }
         };
-
         jwt.sign(
             payload,
             config.get('jwtSecret'),
@@ -112,11 +104,6 @@ const logIn = async (req,res,next) =>{
        return res.status(500).send('Server error');
     }
 };
-
-
-
-
-
 
 exports.createUser = createUser;
 exports.getUser = getUser;

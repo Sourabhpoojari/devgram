@@ -12,6 +12,14 @@ router.post('/',[
 router.get('/',auth,postControllers.getPosts);
 router.get('/:pid',auth,postControllers.getPostById);
 router.delete('/:pid',auth,postControllers.deletePost);
+router.put('/like/:pid',auth,postControllers.likePost);
+router.put('/unlike/:pid',auth,postControllers.unlikePost);
+router.post('/comment/:pid',[
+    auth,
+    [
+        check('text','text is required').not().isEmpty()
+    ]
+],postControllers.addComments);
 
 
 
