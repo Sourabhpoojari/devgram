@@ -178,8 +178,8 @@ const deleteComment = async (req,res,next)=>{
             return res.status(404).json({msg : 'Comment does not exist'});
         }
         // check user
-        if (comment.user.toString() === req.user.id) {
-            return req.status(401).json({msg : 'User not authorized'});
+        if (comment.user.toString() != req.user.id) {
+            return res.status(401).json({msg : 'User not authorized'});
         }
         const removeIndex  = post.comments.map(comment => comment.user.toString()).indexOf(req.user.id);
         post.comments.splice(removeIndex,1);
