@@ -164,6 +164,34 @@ const addComments = async (req,res,next)=>{
         res.status(500).send('Server error');
     }
 };
+// @route DELETE /posts/comment/:pid/:cid
+// @desc remove comment from post
+// @access Private
+const deleteComment = async (req,res,next)=>{
+    try {
+        const post = await Post.findById(req.params.pid);
+        // pull out the comment
+        const comment = post.comments.find(
+            comment => comment.id === req.params.cid
+        )
+        if (!comment) {
+            return res.status(404).json({msg : 'Comment does not exist'});
+        }
+        // check user
+        if (comment.user.toString() === req.user.id) {
+            return req.status(401).json({msg : 'User not authorized'});
+        }
+        const removeIndex  = post.comments.map(comment => comment.user.toString()).indexOf(req.user.id);
+        post.comments.splice(removeIndex,1);
+        post.save();
+        res.json(post.comments);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+};
+
+
 exports.addPost = addPost;
 exports.getPosts = getPosts;
 exports.getPostById = getPostById;
@@ -171,3 +199,4 @@ exports.deletePost = deletePost;
 exports.likePost = likePost;
 exports.unlikePost = unlikePost;
 exports.addComments = addComments;
+exports.deleteComment = deleteComment;

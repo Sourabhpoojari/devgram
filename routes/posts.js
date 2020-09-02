@@ -20,6 +20,7 @@ router.post('/comment/:pid',[
         check('text','text is required').not().isEmpty()
     ]
 ],postControllers.addComments);
+router.delete('/comment/:pid/:cid',auth,postControllers.deleteComment);
 
 
 
