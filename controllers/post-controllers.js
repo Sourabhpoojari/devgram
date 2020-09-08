@@ -190,8 +190,6 @@ const deleteComment = async (req,res,next)=>{
         res.status(500).send('Server error');
     }
 };
-
-
 exports.addPost = addPost;
 exports.getPosts = getPosts;
 exports.getPostById = getPostById;
