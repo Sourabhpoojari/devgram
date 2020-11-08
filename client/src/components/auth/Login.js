@@ -12,16 +12,16 @@ const Login = () => {
     const onChange = e => 
     setFormData({...formData, [e.target.name] : e.target.value});
 
-    const onSubmit = e => 
+    const onSubmit = e => {
       e.preventDefault();
       console.log("Success");
-      
+    };
 
     return (
     <Fragment>
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign Into Your Account</p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)}  required  />
         </div>

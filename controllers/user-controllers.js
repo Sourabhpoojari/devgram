@@ -93,7 +93,7 @@ const logIn = async (req,res,next) =>{
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            {expiresIn : 36000000},
+            {expiresIn : 36000},
             (err,token)=>{
                 if(err) throw err;
                  res.status(200).json({token});
