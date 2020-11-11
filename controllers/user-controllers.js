@@ -60,7 +60,7 @@ const createUser = async (req,res,next) =>{
 const getUser = async (req,res,next)=>{
     try {
         const user = await User.findById(req.user.id).select('-password');
-        res.status(201).json({user});
+        res.status(201).json(user);
     } catch (err) {
         console.log(err);
         res.status(500).send("cannot get user!");
