@@ -14,7 +14,7 @@ router.get('/',auth,userController.getUser);
 
 router.post('/login',
 check('email','Please enter a valid email address').isEmail(),
-check('password','password id required').exists(),
+check('password','password is required').exists(),
 userController.logIn
 );
 

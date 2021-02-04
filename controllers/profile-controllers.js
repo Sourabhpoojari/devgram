@@ -1,4 +1,5 @@
 const Profile = require('../models/profile'),
+Post = require('../models/posts'),
 config = require('config'),
 request = require('request'),
     User = require('../models/user');
@@ -126,7 +127,7 @@ const getUserProfile = async (req,res,next)=>{
 const deleteProfile = async (req,res,next)=>{
     try {
         // @todo - remove user posts
-
+        await Post.deleteMany({user:req.user.id});
         // remove profile
         await Profile.findOneAndRemove({user :req.user.id});
         // remove user
