@@ -93,7 +93,7 @@ const createAndUpdateProfile = async (req,res,next)=>{
 // @access Public
 const getProfiles = async (req,res,next)=>{
     try {
-        const profiles = await Profile.find().populate('user',['name','avator']);
+        const profiles = await Profile.find().populate('user',['name','avatar']);
         res.json(profiles);
     } catch (err) {
         console.error(err.message);
