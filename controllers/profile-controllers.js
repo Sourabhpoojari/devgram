@@ -106,11 +106,10 @@ const getProfiles = async (req,res,next)=>{
 // @access Public
 const getUserProfile = async (req,res,next)=>{
     try {
-        const profile = await Profile.find({user : req.params.user_id}).populate('user',['name','avator']);
+        const profile = await Profile.findOne({user : req.params.user_id}).populate('user',['name','avator']);
         if (!profile) {
            return res.status(400).json({msg:"Profile not found!"});
         }
-
         res.json(profile);
     } catch (err) {
         console.error(err.message);
