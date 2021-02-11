@@ -62,11 +62,11 @@ const createAndUpdateProfile = async (req,res,next)=>{
 
     // Build social object
      profileFields.social = {};
-     if(youtube) profileFields.youtube = youtube;
-     if(twitter) profileFields.twitter = twitter;
-     if(facebook) profileFields.facebook = facebook;
-     if(linkedin) profileFields.linkedin = linkedin;
-     if(instagram) profileFields.instagram = instagram;
+     if(youtube) profileFields.social.youtube = youtube;
+     if(twitter) profileFields.social.twitter = twitter;
+     if(facebook) profileFields.social.facebook = facebook;
+     if(linkedin) profileFields.social.linkedin = linkedin;
+     if(instagram) profileFields.social.instagram = instagram;
 
      try {
          let profile = await Profile.findOne({user:req.user.id});
@@ -106,7 +106,7 @@ const getProfiles = async (req,res,next)=>{
 // @access Public
 const getUserProfile = async (req,res,next)=>{
     try {
-        const profile = await Profile.findOne({user : req.params.user_id}).populate('user',['name','avator']);
+        const profile = await Profile.findOne({user : req.params.user_id}).populate('user',['name','avatar']);
         if (!profile) {
            return res.status(400).json({msg:"Profile not found!"});
         }
