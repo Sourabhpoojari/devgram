@@ -12,7 +12,11 @@ if (isAuthenticated) {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Devgram</h1>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap');
+</style>
+
+          <h1 className="x-large"  style={{fontFamily: 'Playfair Display, serif'}}>Devgram</h1>
           <p className="lead">
             Create a developer profile/portfolio, share posts and get help from
             other developers

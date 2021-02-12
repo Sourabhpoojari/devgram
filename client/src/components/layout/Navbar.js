@@ -33,7 +33,7 @@ import { logout } from '../../actions/auth';
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/"><i className="fas fa-code"></i> Devgram</Link>
+        <Link to="/"  ><i className="fas fa-code"></i>Devgram</Link>
       </h1>
   { !loading &&  (<Fragment> {isAuthenticated ? authLinks : guestLinks }</Fragment>)}
     </nav>
