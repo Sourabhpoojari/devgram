@@ -42,6 +42,7 @@ const Profile = ({getProfileById,profile:{profile,loading},auth,match}) => {
                             ))}
                         </Fragment>) : (<h4>No education credientials!!</h4>)}
                     </div>
+                    {/* check for repos */}
                     {profile.githubusername && (
                         <ProfileGithub username = {profile.githubusername}/>
                     )}
