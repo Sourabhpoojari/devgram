@@ -1,6 +1,9 @@
 import {
+    ADD_POSTS,
+    DELETE_POSTS,
     GET_POSTS,
-    POST_ERROR
+    POST_ERROR,
+    UPDATE_LIKES
 } from '../actions/types';
 
 
@@ -18,6 +21,24 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 posts:payload,
+                loading:false
+            }
+        case ADD_POSTS:
+            return {
+                ...state,
+                posts : [payload,...state.posts],
+                loading : false
+            }
+        case UPDATE_LIKES:
+            return {
+                ...state,
+                posts: state.posts.map(post => post._id === payload.id ? {...post,likes:payload.likes}:post) ,
+                loading:false
+            }
+        case DELETE_POSTS:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== payload),
                 loading:false
             }
         case POST_ERROR:
