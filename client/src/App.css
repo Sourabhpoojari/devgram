@@ -359,6 +359,15 @@ button {
   line-height: 1.8;
   margin-bottom: 1rem;
 }
+/* 404 not found icon */
+.not-found {
+    background: url("https://www.flaticon.com/svg/vstatic/svg/1471/1471454.svg?token=exp=1614782052~hmac=50229e9e60403c5c7955d1740e04b7f0");
+    height: 20px;
+    width: 20px;
+    display: block;
+    /* Other styles here */
+
+}
 
 /* Profile Page */
 .profile-grid {
